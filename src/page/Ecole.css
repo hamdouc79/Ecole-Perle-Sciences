@@ -1,0 +1,256 @@
+/* Page École - Styles généraux */
+.ecole-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #0ea5e9;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.section-title.center {
+  text-align: center;
+}
+
+.section-description {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #6b7280;
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Section Présentation */
+.presentation-section {
+  background-color: white;
+  padding: 60px 0;
+}
+
+.presentation-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.presentation-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.text-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #374151;
+  margin-bottom: 20px;
+}
+
+.presentation-image {
+  flex: 1;
+  max-width: 500px;
+  width: 100%;
+}
+
+.image-box {
+  background-color: #e5e7eb;
+  height: 300px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #9ca3af;
+}
+
+.image-placeholder-text {
+  color: #6b7280;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Section Historique */
+.historique-section {
+  background-color: #f0f9ff;
+  padding: 60px 0;
+}
+
+.historique-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.historique-image {
+  flex: 1;
+  max-width: 400px;
+  width: 100%;
+}
+
+.historique-text {
+  flex: 1;
+  max-width: 700px;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: #0ea5e9;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+  padding-left: 40px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 5px;
+  width: 15px;
+  height: 15px;
+  background-color: #0ea5e9;
+  border-radius: 50%;
+}
+
+.timeline-year {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #0ea5e9;
+  margin-bottom: 10px;
+}
+
+.timeline-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.timeline-text {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* Section Équipe */
+.equipe-section {
+  background-color: white;
+  padding: 60px 0;
+}
+
+.equipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Cartes Enseignants */
+.enseignant-card {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.enseignant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.enseignant-photo {
+  margin-bottom: 20px;
+}
+
+.photo-placeholder {
+  width: 120px;
+  height: 120px;
+  background-color: #e5e7eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border: 3px dashed #9ca3af;
+}
+
+.photo-text {
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.enseignant-info {
+  text-align: center;
+}
+
+.enseignant-nom {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.enseignant-poste {
+  font-size: 1rem;
+  color: #0ea5e9;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.enseignant-matiere {
+  font-size: 0.95rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .presentation-content,
+  .historique-content {
+    flex-direction: row;
+  }
+  
+  .equipe-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .equipe-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
