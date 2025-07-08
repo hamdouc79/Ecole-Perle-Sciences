@@ -30,7 +30,7 @@ const Header = () => {
         {/* Boutons réseaux sociaux (liens externes) */}
         <div className="social-buttons">
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/profile.php?id=100063268628098"
             target="_blank"
             rel="noopener noreferrer"
             className="social-btn facebook"

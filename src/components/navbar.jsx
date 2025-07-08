@@ -8,7 +8,7 @@ const Navbar = () => {
     { label: 'Ecole', path: '/ecole' },
     { label: 'Pédagogie', path: '/pedagogie' },
     { label: 'Scolarité', path: '/scolarite' },
-    { label: 'Espace Parent', path: '/espace-parent' },
+    { label: 'Espace Parent', path: '/espaceParents' },
     { label: 'Recrutement', path: '/recrutement' }
   ];
 
