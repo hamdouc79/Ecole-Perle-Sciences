@@ -1,5 +1,16 @@
-import React, { useState } from 'react';
-import { FileText, Calendar, CheckCircle, Users, Award, Clock, Phone, Mail, MapPin, Download } from 'lucide-react';
+import React, { useState } from "react";
+import {
+  FileText,
+  Calendar,
+  CheckCircle,
+  Users,
+  Award,
+  Clock,
+  Phone,
+  Mail,
+  MapPin,
+  Download,
+} from "lucide-react";
 
 const ProcedureAdmission = () => {
   const [activeStep, setActiveStep] = useState(null);
@@ -8,35 +19,43 @@ const ProcedureAdmission = () => {
     {
       numero: 1,
       titre: "Dossier de Candidature",
-      description: "Téléchargez et complétez le dossier de candidature avec tous les documents requis",
+      description:
+        "Téléchargez et complétez le dossier de candidature avec tous les documents requis",
       icone: <FileText className="icon" />,
       couleur: "blue",
-      details: "Remplissez soigneusement le formulaire en ligne ou téléchargez la version PDF. Joignez tous les documents demandés."
+      details:
+        "Remplissez soigneusement le formulaire en ligne ou téléchargez la version PDF. Joignez tous les documents demandés.",
     },
     {
       numero: 2,
       titre: "Entretien d'Admission",
-      description: "Rendez-vous individuel avec l'équipe pédagogique pour évaluer votre projet",
+      description:
+        "Rendez-vous individuel avec l'équipe pédagogique pour évaluer votre projet",
       icone: <Users className="icon" />,
       couleur: "green",
-      details: "Entretien de 30 minutes avec le directeur pédagogique et un enseignant. Présentez votre projet éducatif."
+      details:
+        "Entretien de 30 minutes avec le directeur pédagogique et un enseignant. Présentez votre projet éducatif.",
     },
     {
       numero: 3,
       titre: "Test d'Évaluation",
-      description: "Évaluation des compétences et connaissances selon le niveau demandé",
+      description:
+        "Évaluation des compétences et connaissances selon le niveau demandé",
       icone: <Award className="icon" />,
       couleur: "purple",
-      details: "Tests adaptés au niveau : français, mathématiques et culture générale. Durée : 2 heures maximum."
+      details:
+        "Tests adaptés au niveau : français, mathématiques et culture générale. Durée : 2 heures maximum.",
     },
     {
       numero: 4,
       titre: "Décision d'Admission",
-      description: "Réponse sous 5 jours ouvrables par email et courrier officiel",
+      description:
+        "Réponse sous 5 jours ouvrables par email et courrier officiel",
       icone: <CheckCircle className="icon" />,
       couleur: "emerald",
-      details: "Notification par email suivie d'un courrier officiel. Instructions pour la finalisation de l'inscription."
-    }
+      details:
+        "Notification par email suivie d'un courrier officiel. Instructions pour la finalisation de l'inscription.",
+    },
   ];
 
   const documents = [
@@ -47,38 +66,51 @@ const ProcedureAdmission = () => {
     "Acte de naissance (copie légalisée)",
     "4 photos d'identité récentes",
     "Certificat médical de moins de 3 mois",
-    "Justificatif de domicile des parents"
+    "Justificatif de domicile des parents",
   ];
 
   const criteres = [
     {
       titre: "Excellence Académique",
-      description: "Évaluation des résultats scolaires et du potentiel d'apprentissage"
+      description:
+        "Évaluation des résultats scolaires et du potentiel d'apprentissage",
     },
     {
       titre: "Motivation Personnelle",
-      description: "Projet éducatif et engagement dans la vie scolaire"
+      description: "Projet éducatif et engagement dans la vie scolaire",
     },
     {
       titre: "Adaptation Sociale",
-      description: "Capacité d'intégration dans notre environnement éducatif"
+      description: "Capacité d'intégration dans notre environnement éducatif",
     },
     {
       titre: "Valeurs Partagées",
-      description: "Adhésion aux principes et valeurs de notre établissement"
-    }
+      description: "Adhésion aux principes et valeurs de notre établissement",
+    },
   ];
 
   const niveaux = [
-    { niveau: "Primaire", prix: "1200 DH", description: "CP à CM2" },
-    { niveau: "Collège", prix: "1500 DH", description: "6ème à 3ème" },
-    { niveau: "Lycée", prix: "1800 DH", description: "2nde à Terminale" }
+    { niveau: "Primaire", prix: "1200 DH/mois", description: "CP à CM2" },
+    { niveau: "Collège", prix: "1500 DH/mois", description: "6ème à 3ème" },
+    { niveau: "Lycée", prix: "indisponible", description: "2nde à Terminale" },
   ];
 
   const services = [
-    { service: "Transport Scolaire", prix: "300 DH/mois", description: "Plusieurs circuits disponibles" },
-    { service: "Restauration", prix: "250 DH/mois", description: "Repas équilibrés" },
-    { service: "Activités Parascolaires", prix: "150 DH/mois", description: "Sport, arts, langues" }
+    {
+      service: "Transport Scolaire",
+      prix: "300 DH/mois",
+      description: "Plusieurs circuits disponibles",
+    },
+    {
+      service: "Restauration",
+      prix: "250 DH/mois",
+      description: "Repas équilibrés",
+    },
+    {
+      service: "Activités Parascolaires",
+      prix: "0 DH/mois",
+      description: "Sport, arts, langues",
+    },
   ];
 
   return (
@@ -633,7 +665,8 @@ const ProcedureAdmission = () => {
         <div className="admission-header-content">
           <h1>Procédure d'Admission</h1>
           <p>
-            Rejoignez notre établissement d'excellence et donnez une nouvelle dimension à votre parcours éducatif
+            Rejoignez notre établissement d'excellence et donnez une nouvelle
+            dimension à votre parcours éducatif
           </p>
         </div>
       </div>
@@ -642,15 +675,15 @@ const ProcedureAdmission = () => {
       <div className="admission-main-content">
         <div className="admission-stats">
           <div className="admission-stat-card">
-            <div className="admission-stat-number">95%</div>
+            <div className="admission-stat-number">97%</div>
             <p className="admission-stat-label">Taux de réussite</p>
           </div>
           <div className="admission-stat-card">
-            <div className="admission-stat-number">500+</div>
+            <div className="admission-stat-number">700+</div>
             <p className="admission-stat-label">Élèves inscrits</p>
           </div>
           <div className="admission-stat-card">
-            <div className="admission-stat-number">25</div>
+            <div className="admission-stat-number">9</div>
             <p className="admission-stat-label">Années d'expérience</p>
           </div>
         </div>
@@ -664,7 +697,7 @@ const ProcedureAdmission = () => {
                 <Calendar className="admission-icon admission-icon-blue" />
                 <div>
                   <h3>Période d'Inscription</h3>
-                  <p>Du 1er Mars au 30 Juin de chaque année</p>
+                  <p>Du 1er Septembre au 30 Octobre de chaque année</p>
                 </div>
               </div>
               <div className="admission-info-item">
@@ -677,10 +710,12 @@ const ProcedureAdmission = () => {
               <div className="admission-info-item">
                 <Download className="admission-icon admission-icon-blue" />
                 <div>
-                  <a className="admission-download-btn"
-                     href="/dossier-candidature.pdf"
-                       target="_blank"
-                     download>
+                  <a
+                    className="admission-download-btn"
+                    href="/dossier-candidature.pdf"
+                    target="_blank"
+                    download
+                  >
                     <Download size={16} />
                     Télécharger le dossier
                   </a>
@@ -690,9 +725,10 @@ const ProcedureAdmission = () => {
             <div className="admission-info-box">
               <h3>À Savoir</h3>
               <p>
-                Les inscriptions sont ouvertes pour tous les niveaux scolaires. 
-                Un accompagnement personnalisé est proposé pour faciliter votre intégration 
-                dans notre établissement. Des bourses d'études sont disponibles pour les familles éligibles.
+                Les inscriptions sont ouvertes pour tous les niveaux scolaires.
+                Un accompagnement personnalisé est proposé pour faciliter votre
+                intégration dans notre établissement. Des bourses d'études sont
+                disponibles pour les familles éligibles.
               </p>
             </div>
           </div>
@@ -703,23 +739,25 @@ const ProcedureAdmission = () => {
           <h2>Étapes du Processus d'Admission</h2>
           <div className="admission-grid admission-grid-4">
             {etapes.map((etape) => (
-              <div 
-                key={etape.numero} 
-                className={`admission-etape-card ${activeStep === etape.numero ? 'active' : ''}`}
-                onClick={() => setActiveStep(activeStep === etape.numero ? null : etape.numero)}
+              <div
+                key={etape.numero}
+                className={`admission-etape-card ${
+                  activeStep === etape.numero ? "active" : ""
+                }`}
+                onClick={() =>
+                  setActiveStep(
+                    activeStep === etape.numero ? null : etape.numero
+                  )
+                }
               >
                 <div className={`admission-etape-icon ${etape.couleur}`}>
                   {etape.icone}
                 </div>
-                <div className="admission-etape-number">
-                  {etape.numero}
-                </div>
+                <div className="admission-etape-number">{etape.numero}</div>
                 <h3>{etape.titre}</h3>
                 <p>{etape.description}</p>
                 {activeStep === etape.numero && (
-                  <div className="admission-etape-details">
-                    {etape.details}
-                  </div>
+                  <div className="admission-etape-details">{etape.details}</div>
                 )}
               </div>
             ))}
@@ -739,8 +777,8 @@ const ProcedureAdmission = () => {
           </div>
           <div className="admission-alert">
             <p>
-              Important : Tous les documents doivent être fournis en original et en copie. 
-              Les copies seront conservées par l'établissement.
+              Important : Tous les documents doivent être fournis en original et
+              en copie. Les copies seront conservées par l'établissement.
             </p>
           </div>
         </div>
@@ -779,18 +817,34 @@ const ProcedureAdmission = () => {
             </div>
           </div>
 
-          <h3 style={{ marginTop: '32px', marginBottom: '16px', color: '#1f2937' }}>Frais de Scolarité par Niveau</h3>
+          <h3
+            style={{
+              marginTop: "32px",
+              marginBottom: "16px",
+              color: "#1f2937",
+            }}
+          >
+            Frais de Scolarité par Niveau
+          </h3>
           <div className="admission-grid admission-grid-3">
             {niveaux.map((niveau, index) => (
               <div key={index} className="admission-niveau-card">
                 <h3>{niveau.niveau}</h3>
-                <div className="prix">{niveau.prix}/mois</div>
+                <div className="prix">{niveau.prix}</div>
                 <p className="description">{niveau.description}</p>
               </div>
             ))}
           </div>
 
-          <h3 style={{ marginTop: '32px', marginBottom: '16px', color: '#1f2937' }}>Services Optionnels</h3>
+          <h3
+            style={{
+              marginTop: "32px",
+              marginBottom: "16px",
+              color: "#1f2937",
+            }}
+          >
+            Services Optionnels
+          </h3>
           <div className="admission-grid admission-grid-3">
             {services.map((service, index) => (
               <div key={index} className="admission-niveau-card">
@@ -803,8 +857,9 @@ const ProcedureAdmission = () => {
 
           <div className="admission-success-alert">
             <p>
-              Facilités de paiement disponibles : règlement en 3 fois sans frais pour les frais de scolarité. 
-              Bourses d'études accordées selon les critères sociaux.
+              Facilités de paiement disponibles : règlement en 3 fois sans frais
+              pour les frais de scolarité. Bourses d'études accordées selon les
+              critères sociaux.
             </p>
           </div>
         </div>
@@ -812,22 +867,25 @@ const ProcedureAdmission = () => {
         {/* Contact */}
         <div className="admission-contact-section">
           <h2>Contactez-nous</h2>
-          <p>Notre équipe est à votre disposition pour vous accompagner dans votre démarche d'admission</p>
+          <p>
+            Notre équipe est à votre disposition pour vous accompagner dans
+            votre démarche d'admission
+          </p>
           <div className="admission-contact-grid">
             <div className="admission-contact-item">
               <Phone className="admission-icon" />
               <h3>Téléphone</h3>
-              <p>+212 5 35 XX XX XX</p>
+              <p>+212 661603173</p>
             </div>
             <div className="admission-contact-item">
               <Mail className="admission-icon" />
               <h3>Email</h3>
-              <p>admission@ecole.ma</p>
+              <p>La.perle.des.sciences@gmail.com</p>
             </div>
             <div className="admission-contact-item">
               <MapPin className="admission-icon" />
               <h3>Adresse</h3>
-              <p>123 Rue de l'École, Fès</p>
+              <p>741 تجزئة جوهرة,النرجس,حي الرياض- فاس</p>
             </div>
           </div>
         </div>

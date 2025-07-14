@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Users, BookOpen, Award, Mail, Phone, MapPin, Send, Check } from 'lucide-react';
-
+import { Users, BookOpen, Award, Mail, Phone, MapPin, Send, Check, Upload, FileText, X, AlertCircle } from 'lucide-react';
+import apiService from '../service/api';
 const PageRecrutement = () => {
   const [formulaire, setFormulaire] = useState({
     nom: '',
@@ -8,10 +8,13 @@ const PageRecrutement = () => {
     email: '',
     telephone: '',
     poste: '',
-    message: ''
+    message: '',
+    cv: null
   });
 
   const [envoye, setEnvoye] = useState(false);
+  const [enCours, setEnCours] = useState(false);
+  const [erreur, setErreur] = useState('');
 
   const handleChange = (e) => {
     setFormulaire({
@@ -20,10 +23,92 @@ const PageRecrutement = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // Vérifier le type de fichier
+      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      if (!allowedTypes.includes(file.type)) {
+        setErreur('Seuls les fichiers PDF, DOC et DOCX sont autorisés');
+        return;
+      }
+      
+      // Vérifier la taille (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        setErreur('La taille du fichier ne doit pas dépasser 5MB');
+        return;
+      }
+      
+      setErreur('');
+      setFormulaire({
+        ...formulaire,
+        cv: file
+      });
+    }
+  };
+
+  const supprimerCV = () => {
+    setFormulaire({
+      ...formulaire,
+      cv: null
+    });
+    // Réinitialiser l'input file
+    const fileInput = document.getElementById('cv-upload');
+    if (fileInput) {
+      fileInput.value = '';
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setEnvoye(true);
-    setTimeout(() => setEnvoye(false), 3000);
+    setErreur('');
+    setEnCours(true);
+
+    try {
+      // Créer FormData pour l'envoi
+      const formData = new FormData();
+      formData.append('nom', formulaire.nom);
+      formData.append('prenom', formulaire.prenom);
+      formData.append('email', formulaire.email);
+      formData.append('telephone', formulaire.telephone);
+      formData.append('posteSouhaite', formulaire.poste);
+      formData.append('messageMotivation', formulaire.message);
+      
+      if (formulaire.cv) {
+        formData.append('cv', formulaire.cv);
+      }
+
+      // Simuler l'appel API - remplacez par votre vraie logique
+      // await apiService.createJobApplication(formData);
+      
+      // Simulation d'un délai
+      await apiService.createJobApplication(formData);      
+      setEnvoye(true);
+      
+      // Réinitialiser le formulaire
+      setFormulaire({
+        nom: '',
+        prenom: '',
+        email: '',
+        telephone: '',
+        poste: '',
+        message: '',
+        cv: null
+      });
+      
+      // Réinitialiser l'input file
+      const fileInput = document.getElementById('cv-upload');
+      if (fileInput) {
+        fileInput.value = '';
+      }
+      
+      setTimeout(() => setEnvoye(false), 5000);
+      
+    } catch (error) {
+      setErreur(error.message || 'Erreur lors de l\'envoi de la candidature');
+    } finally {
+      setEnCours(false);
+    }
   };
 
   const scrollToForm = () => {
@@ -224,6 +309,49 @@ const PageRecrutement = () => {
               </select>
             </div>
 
+            {/* Section Upload CV */}
+            <div className="champ-formulaire">
+              <label className="label-formulaire">CV * (PDF, DOC, DOCX - Max 5MB)</label>
+              <div className="zone-upload">
+                {!formulaire.cv ? (
+                  <div className="zone-drag-drop">
+                    <Upload className="icone-upload" />
+                    <p className="texte-upload">
+                      Glissez votre CV ici ou 
+                      <label htmlFor="cv-upload" className="lien-upload"> cliquez pour parcourir</label>
+                    </p>
+                    <input
+                      id="cv-upload"
+                      type="file"
+                      accept=".pdf,.doc,.docx"
+                      onChange={handleFileChange}
+                      className="input-file-cache"
+                      required
+                    />
+                  </div>
+                ) : (
+                  <div className="fichier-selectionne">
+                    <div className="info-fichier">
+                      <FileText className="icone-fichier" />
+                      <div className="details-fichier">
+                        <span className="nom-fichier">{formulaire.cv.name}</span>
+                        <span className="taille-fichier">
+                          {(formulaire.cv.size / 1024 / 1024).toFixed(2)} MB
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={supprimerCV}
+                      className="bouton-supprimer"
+                    >
+                      <X className="icone-supprimer" />
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+
             <div className="champ-formulaire">
               <label className="label-formulaire">Message de motivation</label>
               <textarea
@@ -236,9 +364,29 @@ const PageRecrutement = () => {
               ></textarea>
             </div>
 
-            <button type="button" className="bouton-envoyer" onClick={handleSubmit}>
-              <Send className="icone-envoyer" />
-              Envoyer ma candidature
+            {erreur && (
+              <div className="message-erreur">
+                <AlertCircle className="icone-erreur" />
+                {erreur}
+              </div>
+            )}
+
+            <button 
+              type="submit" 
+              className="bouton-envoyer"
+              disabled={enCours}
+            >
+              {enCours ? (
+                <>
+                  <div className="spinner"></div>
+                  Envoi en cours...
+                </>
+              ) : (
+                <>
+                  <Send className="icone-envoyer" />
+                  Envoyer ma candidature
+                </>
+              )}
             </button>
 
             {envoye && (
@@ -671,6 +819,109 @@ const PageRecrutement = () => {
           resize: vertical;
         }
 
+        /* Styles pour l'upload de CV */
+        .zone-upload {
+          margin-top: 8px;
+        }
+
+        .zone-drag-drop {
+          border: 2px dashed #3498db;
+          border-radius: 8px;
+          padding: 40px 20px;
+          text-align: center;
+          background: #f8f9fa;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+
+        .zone-drag-drop:hover {
+          background: #e3f2fd;
+          border-color: #2980b9;
+        }
+
+        .icone-upload {
+          width: 48px;
+          height: 48px;
+          color: #3498db;
+          margin-bottom: 15px;
+        }
+
+        .texte-upload {
+          color: #666;
+          font-size: 1rem;
+        }
+
+        .lien-upload {
+          color: #3498db;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: underline;
+        }
+
+        .input-file-cache {
+          display: none;
+        }
+
+        .fichier-selectionne {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 15px;
+          background: #e8f5e8;
+          border: 1px solid #27ae60;
+          border-radius: 8px;
+        }
+
+        .info-fichier {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .icone-fichier {
+          width: 24px;
+          height: 24px;
+          color: #27ae60;
+        }
+
+        .details-fichier {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .nom-fichier {
+          font-weight: 600;
+          color: #2c3e50;
+        }
+
+        .taille-fichier {
+          font-size: 0.9rem;
+          color: #666;
+        }
+
+        .bouton-supprimer {
+          background: #e74c3c;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 32px;
+          height: 32px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background 0.3s ease;
+        }
+
+        .bouton-supprimer:hover {
+          background: #c0392b;
+        }
+
+        .icone-supprimer {
+          width: 16px;
+          height: 16px;
+        }
+
         .bouton-envoyer {
           background: #27ae60;
           color: white;
@@ -688,13 +939,32 @@ const PageRecrutement = () => {
           transition: background 0.3s ease;
         }
 
-        .bouton-envoyer:hover {
+        .bouton-envoyer:hover:not(:disabled) {
           background: #219a52;
+        }
+
+        .bouton-envoyer:disabled {
+          background: #95a5a6;
+          cursor: not-allowed;
         }
 
         .icone-envoyer {
           width: 20px;
           height: 20px;
+        }
+
+        .spinner {
+          width: 20px;
+          height: 20px;
+          border: 2px solid #ffffff;
+          border-top: 2px solid transparent;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
         }
 
         .message-succes {
@@ -710,7 +980,21 @@ const PageRecrutement = () => {
           font-weight: 500;
         }
 
-        .icone-succes {
+        .message-erreur {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-top: 10px;
+          padding: 15px;
+          background: #f8d7da;
+          border: 1px solid #f5c6cb;
+          border-radius: 8px;
+          color: #721c24;
+          font-weight: 500;
+        }
+
+        .icone-succes,
+        .icone-erreur {
           width: 20px;
           height: 20px;
         }
@@ -769,6 +1053,20 @@ const PageRecrutement = () => {
           .cercle-1, .cercle-2, .cercle-3 {
             display: none;
           }
+
+          .zone-drag-drop {
+            padding: 30px 15px;
+          }
+
+          .fichier-selectionne {
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-start;
+          }
+
+          .info-fichier {
+            width: 100%;
+          }
         }
       `}</style>
     </div>
@@ -776,4 +1074,3 @@ const PageRecrutement = () => {
 };
 
 export default PageRecrutement;
-

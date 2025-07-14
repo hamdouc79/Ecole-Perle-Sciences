@@ -1,5 +1,12 @@
-import React from 'react';
-import { GraduationCap, Users, Award, Globe, BookOpen, Star } from 'lucide-react';
+import React from "react";
+import {
+  GraduationCap,
+  Users,
+  Award,
+  Globe,
+  BookOpen,
+  Star,
+} from "lucide-react";
 
 const Ecole = () => {
   return (
@@ -14,67 +21,65 @@ const Ecole = () => {
             <div className="shape shape-4"></div>
           </div>
         </div>
-        
+
         <div className="hero-content">
           <div className="hero-text">
             <div className="hero-badge">
               <GraduationCap className="badge-icon" />
               <span>Excellence Éducative</span>
             </div>
-            
+
             <h1 className="hero-title">
-              Lycée Français International
-              <span className="title-highlight"> André-Malraux</span>
+              Groupe scolaire
+              <span className="title-highlight"> Perle-des-Sciences</span>
             </h1>
-            
+
             <p className="hero-description">
-              Un établissement d'excellence qui façonne les leaders de demain dans un environnement 
-              multiculturel et bienveillant. De la maternelle au lycée, nous offrons une éducation 
-              française de qualité au cœur du Maroc.
+              Un établissement d'excellence qui façonne les leaders de demain
+              dans un environnement multiculturel et bienveillant. De la
+              maternelle au lycée, nous offrons une éducation française de
+              qualité au cœur du Maroc.
             </p>
-            
+
             <div className="hero-stats">
               <div className="stat-item">
-                <div className="stat-number">25+</div>
+                <div className="stat-number">9+</div>
                 <div className="stat-label">Années d'expérience</div>
               </div>
               <div className="stat-item">
-                <div className="stat-number">800+</div>
+                <div className="stat-number">700+</div>
                 <div className="stat-label">Élèves formés</div>
               </div>
               <div className="stat-item">
-                <div className="stat-number">98%</div>
+                <div className="stat-number">97%</div>
                 <div className="stat-label">Taux de réussite</div>
               </div>
             </div>
-            
+
             <div className="hero-features">
               <div className="feature-item">
                 <Users className="feature-icon" />
                 <span>Environnement multiculturel</span>
               </div>
-              <div className="feature-item">
-                <Award className="feature-icon" />
-                <span>Certification OSUI</span>
-              </div>
+              <div className="feature-item"></div>
               <div className="feature-item">
                 <Globe className="feature-icon" />
                 <span>Ouverture internationale</span>
               </div>
             </div>
           </div>
-          
+
           <div className="hero-image">
             <div className="image-container">
-              <img 
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                alt="École moderne" 
+              <img
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                alt="École moderne"
                 className="hero-img"
               />
               <div className="image-overlay">
                 <div className="overlay-content">
                   <BookOpen className="overlay-icon" />
-                  <span>Campus moderne à Rabat</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -88,53 +93,47 @@ const Ecole = () => {
           <div className="historique-content">
             <div className="historique-image">
               <div className="image-box">
-                <img 
-                  src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                  alt="Histoire de l'école" 
+                <img
+                  src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                  alt="Histoire de l'école"
                   className="historique-img"
                 />
               </div>
             </div>
-            
+
             <div className="historique-text">
               <h2 className="section-title">Historique de l'École</h2>
               <div className="timeline">
                 <div className="timeline-item">
-                  <div className="timeline-year">1995</div>
+                  <div className="timeline-year">2016</div>
                   <div className="timeline-content">
-                    <h3 className="timeline-title">Création de l'établissement</h3>
+                    <h3 className="timeline-title">
+                      Création de l'établissement
+                    </h3>
                     <p className="timeline-text">
-                      Ouverture du Lycée Français International André-Malraux à Rabat.
+                      Ouverture du Groupe Scolaire la Perle des Sciences
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="timeline-item">
-                  <div className="timeline-year">2000</div>
+                  <div className="timeline-year">2016</div>
                   <div className="timeline-content">
                     <h3 className="timeline-title">Extension du primaire</h3>
                     <p className="timeline-text">
-                      Agrandissement des locaux et développement des classes primaires.
+                      Agrandissement des locaux et développement des classes
+                      primaires.
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="timeline-item">
-                  <div className="timeline-year">2010</div>
-                  <div className="timeline-content">
-                    <h3 className="timeline-title">Accréditation internationale</h3>
-                    <p className="timeline-text">
-                      Obtention de la certification internationale et reconnaissance par l'OSUI.
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="timeline-item">
-                  <div className="timeline-year">2020</div>
+                  <div className="timeline-year">2023</div>
                   <div className="timeline-content">
                     <h3 className="timeline-title">Modernisation numérique</h3>
                     <p className="timeline-text">
-                      Mise en place des outils numériques et adaptation à l'enseignement moderne.
+                      Mise en place des outils numériques et adaptation à
+                      l'enseignement moderne.
                     </p>
                   </div>
                 </div>
@@ -149,16 +148,17 @@ const Ecole = () => {
         <div className="section-container">
           <h2 className="section-title center">Notre Équipe Enseignante</h2>
           <p className="section-description">
-            Une équipe pédagogique qualifiée et expérimentée, dédiée à la réussite de chaque élève.
+            Une équipe pédagogique qualifiée et expérimentée, dédiée à la
+            réussite de chaque élève.
           </p>
-          
+
           <div className="equipe-grid">
             {/* Enseignant 1 */}
             <div className="enseignant-card">
               <div className="enseignant-photo">
-                <img 
-                  src="https://images.unsplash.com/photo-1494790108755-2616c5e739b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                  alt="Mme. Martin" 
+                <img
+                  src="https://images.unsplash.com/photo-1494790108755-2616c5e739b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                  alt="Mme. Martin"
                   className="enseignant-img"
                 />
               </div>
@@ -168,13 +168,13 @@ const Ecole = () => {
                 <p className="enseignant-matiere">Français - Littérature</p>
               </div>
             </div>
-            
+
             {/* Enseignant 2 */}
             <div className="enseignant-card">
               <div className="enseignant-photo">
-                <img 
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                  alt="M. Dubois" 
+                <img
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                  alt="M. Dubois"
                   className="enseignant-img"
                 />
               </div>
@@ -184,13 +184,13 @@ const Ecole = () => {
                 <p className="enseignant-matiere">Mathématiques - Sciences</p>
               </div>
             </div>
-            
+
             {/* Enseignant 3 */}
             <div className="enseignant-card">
               <div className="enseignant-photo">
-                <img 
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                  alt="Mme. Benali" 
+                <img
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                  alt="Mme. Benali"
                   className="enseignant-img"
                 />
               </div>
@@ -200,13 +200,13 @@ const Ecole = () => {
                 <p className="enseignant-matiere">Arabe - Histoire</p>
               </div>
             </div>
-            
+
             {/* Enseignant 4 */}
             <div className="enseignant-card">
               <div className="enseignant-photo">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                  alt="M. Johnson" 
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                  alt="M. Johnson"
                   className="enseignant-img"
                 />
               </div>
@@ -216,13 +216,13 @@ const Ecole = () => {
                 <p className="enseignant-matiere">Anglais - Espagnol</p>
               </div>
             </div>
-            
+
             {/* Enseignant 5 */}
             <div className="enseignant-card">
               <div className="enseignant-photo">
-                <img 
-                  src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                  alt="Mme. Rousseau" 
+                <img
+                  src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                  alt="Mme. Rousseau"
                   className="enseignant-img"
                 />
               </div>
@@ -232,13 +232,13 @@ const Ecole = () => {
                 <p className="enseignant-matiere">Arts - Musique</p>
               </div>
             </div>
-            
+
             {/* Enseignant 6 */}
             <div className="enseignant-card">
               <div className="enseignant-photo">
-                <img 
-                  src="https://images.unsplash.com/photo-1566492031773-4f4e44671d66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                  alt="M. El Fassi" 
+                <img
+                  src="https://images.unsplash.com/photo-1566492031773-4f4e44671d66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                  alt="M. El Fassi"
                   className="enseignant-img"
                 />
               </div>
@@ -324,8 +324,13 @@ const Ecole = () => {
         }
 
         @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
         }
 
         .hero-content {
@@ -367,7 +372,7 @@ const Ecole = () => {
         }
 
         .title-highlight {
-          background: linear-gradient(45deg, #FFD700, #FFA500);
+          background: linear-gradient(45deg, #ffd700, #ffa500);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -393,7 +398,7 @@ const Ecole = () => {
         .stat-number {
           font-size: 2.5rem;
           font-weight: 800;
-          color: #FFD700;
+          color: #ffd700;
           margin-bottom: 5px;
         }
 
@@ -418,7 +423,7 @@ const Ecole = () => {
         .feature-icon {
           width: 20px;
           height: 20px;
-          color: #FFD700;
+          color: #ffd700;
         }
 
         .hero-image {
@@ -529,7 +534,7 @@ const Ecole = () => {
         }
 
         .timeline::before {
-          content: '';
+          content: "";
           position: absolute;
           left: 15px;
           top: 0;
@@ -545,7 +550,7 @@ const Ecole = () => {
         }
 
         .timeline-item::before {
-          content: '';
+          content: "";
           position: absolute;
           left: -8px;
           top: 5px;
@@ -657,7 +662,7 @@ const Ecole = () => {
           .historique-content {
             flex-direction: row;
           }
-          
+
           .equipe-grid {
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           }

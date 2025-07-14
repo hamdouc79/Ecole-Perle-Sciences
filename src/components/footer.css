@@ -53,20 +53,12 @@
   background-color: #1877f2;
 }
 
-.social-link.twitter {
-  background-color: #1da1f2;
-}
-
 .social-link.instagram {
-  background-color: #e4405f;
+  background-color: #ffffff;
 }
 
 .social-link.youtube {
-  background-color: #ff0000;
-}
-
-.social-link.linkedin {
-  background-color: #0077b5;
+  background-color: #ffffff;
 }
 
 /* Section Centre */
@@ -180,7 +172,7 @@
     flex-direction: row;
     align-items: flex-start;
   }
-  
+
   .footer-right {
     align-items: flex-end;
   }
@@ -190,11 +182,11 @@
   .footer-right {
     align-items: flex-start;
   }
-  
+
   .footer-links {
     text-align: left;
   }
-  
+
   .logo-section {
     justify-content: flex-start;
   }

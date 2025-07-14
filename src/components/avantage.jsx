@@ -1,7 +1,7 @@
-import React from 'react';
-import enfant from '../assets/enfant.png';
-import avantage2 from '../assets/avantage2.gif';
-
+import React from "react";
+import enfant from "../assets/enfant.png";
+import avantage2 from "../assets/avantage2.gif";
+import Students from "../assets/students.jpg";
 
 const Avantages = () => {
   return (
@@ -11,16 +11,15 @@ const Avantages = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="main-title">
-              Accompagner tous nos élèves de la petite enfance au seuil 
-              de l'âge adulte, dans des parcours d'excellence qui favorisent 
+              Accompagner tous nos élèves de la petite enfance au seuil de l'âge
+              adulte, dans des parcours d'excellence qui favorisent
               l'épanouissement de chacun.
             </h1>
           </div>
           <div className="hero-image">
             {/* Espace réservé pour votre image */}
             <div className="image-placeholder">
-            <img src={avantage2} alt="avantage2" className="image-texte" />
-
+              <img src={avantage2} alt="avantage2" className="image-texte" />
             </div>
           </div>
         </div>
@@ -32,14 +31,18 @@ const Avantages = () => {
           <div className="text-content">
             <h2 className="section-title">Notre modèle pédagogique</h2>
             <p className="section-text">
-              Le plurilinguisme (français, arabe, anglais, espagnol) avec des classes internationales dès la maternelle.
+              Le plurilinguisme (français, arabe, anglais, ) avec des classes
+              internationales dès la maternelle.
             </p>
           </div>
           <div className="content-image">
             {/* Espace réservé pour votre image */}
             <div className="image-placeholder small">
-             <img src={enfant} alt="Modèle pédagogique" className="image-texte" />
-
+              <img
+                src={Students}
+                alt="Modèle pédagogique"
+                className="image-texte"
+              />
             </div>
           </div>
         </div>
@@ -53,7 +56,9 @@ const Avantages = () => {
             Notre Vision
           </h3>
           <p className="card-text">
-            Offrir à chaque élève un environnement stimulant, bienveillant et exigeant, pour qu'il puisse révéler son plein potentiel, de la maternelle au lycée.
+            Offrir à chaque élève un environnement stimulant, bienveillant et
+            exigeant, pour qu'il puisse révéler son plein potentiel, de la
+            maternelle au lycée.
           </p>
         </div>
       </div>
@@ -66,7 +71,9 @@ const Avantages = () => {
             Nos Fondements
           </h3>
           <p className="card-text">
-            Un équilibre harmonieux entre rigueur académique, ouverture interculturelle et développement personnel, ancrés dans les valeurs citoyennes et humaines.
+            Un équilibre harmonieux entre rigueur académique, ouverture
+            interculturelle et développement personnel, ancrés dans les valeurs
+            citoyennes et humaines.
           </p>
         </div>
       </div>
@@ -79,12 +86,15 @@ const Avantages = () => {
             Notre Approche Pédagogique
           </h3>
           <p className="card-text">
-            Une méthode innovante qui place l'élève au centre de son apprentissage, favorisant l'autonomie, la créativité et l'excellence académique.
+            Une méthode innovante qui place l'élève au centre de son
+            apprentissage, favorisant l'autonomie, la créativité et l'excellence
+            académique.
           </p>
         </div>
       </div>
-    
-<style jsx>{ `
+
+      <style jsx>
+        {`
     /* Styles généraux */
 .page-container {
   background-color: #f9fafb;
@@ -138,7 +148,7 @@ const Avantages = () => {
 }
 
 .image-placeholder.small {
-  height: 300px;
+  height: 380px;
 }
 
 .image-text {
@@ -148,7 +158,7 @@ const Avantages = () => {
 
 /* Section Contenu */
 .content-section {
-  background-color: #eff6ff;
+  background-color: #fcfbfbff;
   padding: 64px 24px;
 }
 
@@ -264,10 +274,9 @@ const Avantages = () => {
   .main-title {
     font-size: 2.25rem; }
   `}
-
-</style>
-</div>
+      </style>
+    </div>
   );
-}
+};
 
 export default Avantages;
