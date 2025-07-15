@@ -211,22 +211,6 @@ const EspaceParents = () => {
         </div>
 
         <div className="emplois-container">
-          <div className="niveau-selector">
-            <select className="niveau-select">
-              <option>Sélectionner un niveau</option>
-              <option>Maternelle</option>
-              <option>CP</option>
-              <option>CE1</option>
-              <option>CE2</option>
-              <option>CM1</option>
-              <option>CM2</option>
-              <option>6ème</option>
-              <option>5ème</option>
-              <option>4ème</option>
-              <option>3ème</option>
-            </select>
-          </div>
-
           <div className="emploi-temps-grid">
             <div className="emploi-card">
               <div className="emploi-header">

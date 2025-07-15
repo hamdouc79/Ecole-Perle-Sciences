@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import img1 from '../assets/image.jpg';
-import img2 from '../assets/image2.jpg';
-import img3 from '../assets/image7.jpg';
-import img4 from '../assets/image5.jpg';
-import img5 from '../assets/image3.jpg';
+import React, { useState, useEffect } from "react";
+import img1 from "../assets/image.jpg";
+import img2 from "../assets/image2.jpg";
+import img3 from "../assets/image7.jpg";
+import img4 from "../assets/image5.jpg";
+import img5 from "../assets/image3.jpg";
+import Img3 from "../assets/img3.jpg";
+import Img2 from "../assets/Img2.jpg";
+
 const Carousel = () => {
   const [currentImage, setCurrentImage] = useState(0);
 
-  const images = [
-    img1,img2,img3,img4,img5
-     ];
+  const images = [img1, Img2, Img3, img2, img3, img4, img5];
 
   // Change automatiquement d'image toutes les 5 secondes
   useEffect(() => {
@@ -45,7 +46,9 @@ const Carousel = () => {
               key={index}
               src={image}
               alt={`Image ${index + 1}`}
-              className={`carousel-image ${index === currentImage ? 'active' : ''}`}
+              className={`carousel-image ${
+                index === currentImage ? "active" : ""
+              }`}
             />
           ))}
         </div>
@@ -63,7 +66,7 @@ const Carousel = () => {
           {images.map((_, index) => (
             <button
               key={index}
-              className={`dot ${index === currentImage ? 'active' : ''}`}
+              className={`dot ${index === currentImage ? "active" : ""}`}
               onClick={() => goToImage(index)}
             />
           ))}

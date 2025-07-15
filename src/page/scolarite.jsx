@@ -90,15 +90,15 @@ const ProcedureAdmission = () => {
   ];
 
   const niveaux = [
-    { niveau: "Primaire", prix: "1200 DH/mois", description: "CP à CM2" },
-    { niveau: "Collège", prix: "1500 DH/mois", description: "6ème à 3ème" },
-    { niveau: "Lycée", prix: "indisponible", description: "2nde à Terminale" },
+    { niveau: "Maternelle", prix: "800 DH/mois", description: "" },
+    { niveau: "primaire", prix: "1000 DH/mois", description: "" },
+    { niveau: "collège", prix: "1400 DH/mois", description: "" },
   ];
 
   const services = [
     {
       service: "Transport Scolaire",
-      prix: "300 DH/mois",
+      prix: "400 DH/mois",
       description: "Plusieurs circuits disponibles",
     },
     {
@@ -683,7 +683,7 @@ const ProcedureAdmission = () => {
             <p className="admission-stat-label">Élèves inscrits</p>
           </div>
           <div className="admission-stat-card">
-            <div className="admission-stat-number">9</div>
+            <div className="admission-stat-number">8</div>
             <p className="admission-stat-label">Années d'expérience</p>
           </div>
         </div>

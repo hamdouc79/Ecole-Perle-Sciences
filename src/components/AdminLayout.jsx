@@ -14,6 +14,7 @@ import {
   Bell,
   User,
 } from "lucide-react";
+import "./AdminLayout.css";
 
 const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);

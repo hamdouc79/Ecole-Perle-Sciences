@@ -16,26 +16,39 @@ const Header = () => {
   const [loginError, setLoginError] = useState("");
   const [showDashboardChoice, setShowDashboardChoice] = useState(false);
 
-  const ADMIN_USERNAME = "admin";
-  const ADMIN_PASSWORD = "admin123";
-
   const handleAdminClick = () => {
     setShowAdminModal(true);
     setLoginError("");
     setShowDashboardChoice(false);
   };
 
-  const handleAdminLogin = (e) => {
+  const handleAdminLogin = async (e) => {
     e.preventDefault();
+    console.log(
+      "URL utilisée pour la requête :",
+      `${process.env.REACT_APP_API_URL}/login-admin`
+    );
 
-    if (
-      adminCredentials.username === ADMIN_USERNAME &&
-      adminCredentials.password === ADMIN_PASSWORD
-    ) {
-      sessionStorage.setItem("isAdmin", "true");
-      setShowDashboardChoice(true);
-    } else {
-      setLoginError("Nom d'utilisateur ou mot de passe incorrect");
+    try {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/login-admin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(adminCredentials),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        sessionStorage.setItem("isAdmin", "true");
+        setShowDashboardChoice(true);
+        setLoginError("");
+      } else {
+        setLoginError("Nom d'utilisateur ou mot de passe incorrect");
+      }
+    } catch (error) {
+      setLoginError("Erreur lors de la connexion au serveur");
     }
   };
 

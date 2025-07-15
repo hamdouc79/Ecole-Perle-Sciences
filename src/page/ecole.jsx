@@ -7,6 +7,11 @@ import {
   BookOpen,
   Star,
 } from "lucide-react";
+import ecole from "../assets/ecole.jpg";
+import abdelbari from "..//assets/abdelbari.jpg";
+import naima from "..//assets/naima.jpg";
+import souad from "..//assets/souad.jpg";
+import fatiha from "..//assets/fatiha.jpg";
 
 const Ecole = () => {
   return (
@@ -43,7 +48,7 @@ const Ecole = () => {
 
             <div className="hero-stats">
               <div className="stat-item">
-                <div className="stat-number">9+</div>
+                <div className="stat-number">8+</div>
                 <div className="stat-label">Années d'expérience</div>
               </div>
               <div className="stat-item">
@@ -71,11 +76,7 @@ const Ecole = () => {
 
           <div className="hero-image">
             <div className="image-container">
-              <img
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                alt="École moderne"
-                className="hero-img"
-              />
+              <img src={ecole} alt="École moderne" className="hero-img" />
               <div className="image-overlay">
                 <div className="overlay-content">
                   <BookOpen className="overlay-icon" />
@@ -105,7 +106,7 @@ const Ecole = () => {
               <h2 className="section-title">Historique de l'École</h2>
               <div className="timeline">
                 <div className="timeline-item">
-                  <div className="timeline-year">2016</div>
+                  <div className="timeline-year">2017</div>
                   <div className="timeline-content">
                     <h3 className="timeline-title">
                       Création de l'établissement
@@ -117,7 +118,7 @@ const Ecole = () => {
                 </div>
 
                 <div className="timeline-item">
-                  <div className="timeline-year">2016</div>
+                  <div className="timeline-year">2017</div>
                   <div className="timeline-content">
                     <h3 className="timeline-title">Extension du primaire</h3>
                     <p className="timeline-text">
@@ -128,7 +129,7 @@ const Ecole = () => {
                 </div>
 
                 <div className="timeline-item">
-                  <div className="timeline-year">2023</div>
+                  <div className="timeline-year">2019</div>
                   <div className="timeline-content">
                     <h3 className="timeline-title">Modernisation numérique</h3>
                     <p className="timeline-text">
@@ -163,8 +164,8 @@ const Ecole = () => {
                 />
               </div>
               <div className="enseignant-info">
-                <h3 className="enseignant-nom">Mme. Martin</h3>
-                <p className="enseignant-poste">Directrice Pédagogique</p>
+                <h3 className="enseignant-nom">M. Abdel atik</h3>
+                <p className="enseignant-poste"> PDG</p>
                 <p className="enseignant-matiere">Français - Littérature</p>
               </div>
             </div>
@@ -173,13 +174,13 @@ const Ecole = () => {
             <div className="enseignant-card">
               <div className="enseignant-photo">
                 <img
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                  src={abdelbari}
                   alt="M. Dubois"
                   className="enseignant-img"
                 />
               </div>
               <div className="enseignant-info">
-                <h3 className="enseignant-nom">M. Dubois</h3>
+                <h3 className="enseignant-nom">M. Abdelbari</h3>
                 <p className="enseignant-poste">Professeur Senior</p>
                 <p className="enseignant-matiere">Mathématiques - Sciences</p>
               </div>
@@ -189,13 +190,13 @@ const Ecole = () => {
             <div className="enseignant-card">
               <div className="enseignant-photo">
                 <img
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                  src={fatiha}
                   alt="Mme. Benali"
                   className="enseignant-img"
                 />
               </div>
               <div className="enseignant-info">
-                <h3 className="enseignant-nom">Mme. Benali</h3>
+                <h3 className="enseignant-nom">Mme. fatiha</h3>
                 <p className="enseignant-poste">Professeure</p>
                 <p className="enseignant-matiere">Arabe - Histoire</p>
               </div>
@@ -204,14 +205,10 @@ const Ecole = () => {
             {/* Enseignant 4 */}
             <div className="enseignant-card">
               <div className="enseignant-photo">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
-                  alt="M. Johnson"
-                  className="enseignant-img"
-                />
+                <img src={souad} alt="Mme. souad" className="enseignant-img" />
               </div>
               <div className="enseignant-info">
-                <h3 className="enseignant-nom">M. Johnson</h3>
+                <h3 className="enseignant-nom">Mme. Souad</h3>
                 <p className="enseignant-poste">Professeur</p>
                 <p className="enseignant-matiere">Anglais - Espagnol</p>
               </div>
@@ -221,13 +218,13 @@ const Ecole = () => {
             <div className="enseignant-card">
               <div className="enseignant-photo">
                 <img
-                  src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+                  src={naima}
                   alt="Mme. Rousseau"
                   className="enseignant-img"
                 />
               </div>
               <div className="enseignant-info">
-                <h3 className="enseignant-nom">Mme. Rousseau</h3>
+                <h3 className="enseignant-nom">Mme. Naima</h3>
                 <p className="enseignant-poste">Professeure</p>
                 <p className="enseignant-matiere">Arts - Musique</p>
               </div>
