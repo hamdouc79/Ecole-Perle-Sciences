@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  GraduationCap,
-  Users,
-  Award,
-  Globe,
-  BookOpen,
-  Star,
-} from "lucide-react";
+import { GraduationCap, Users, Globe, BookOpen } from "lucide-react";
 import ecole from "../assets/ecole.jpg";
 import abdelbari from "..//assets/abdelbari.jpg";
 import naima from "..//assets/naima.jpg";
