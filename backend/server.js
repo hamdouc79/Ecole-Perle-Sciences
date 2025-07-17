@@ -26,7 +26,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "http://localhost:3001",
-      "https://groupe-scolaire-perle-des-sciences.netlify.app/",
+      process.env.FRONTEND_URL,
     ],
     credentials: true,
   })
