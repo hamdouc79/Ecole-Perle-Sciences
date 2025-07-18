@@ -1,35 +1,48 @@
-const express = require('express');
-const { body, validationResult } = require('express-validator');
-const Student = require('../models/students');
+const express = require("express");
+const { body, validationResult } = require("express-validator");
+const Student = require("../models/students");
 
 const router = express.Router();
 
 // Validation pour l'inscription d'étudiant
 const validateStudent = [
-  body('prenom').notEmpty().withMessage('Le prénom est requis'),
-  body('nom').notEmpty().withMessage('Le nom est requis'),
-  body('email').isEmail().withMessage('Email invalide'),
-  body('telephone').notEmpty().withMessage('Le téléphone est requis'),
-  body('dateNaissance').isDate().withMessage('Date de naissance invalide'),
-  body('genre').isIn(['masculin', 'feminin']).withMessage('Genre invalide'),
-  body('niveau').isIn(['maternelle', 'primaire', 'college', 'lycee']).withMessage('Niveau invalide'),
-  body('classe').notEmpty().withMessage('La classe est requise'),
-  body('adresse').notEmpty().withMessage('L\'adresse est requise'),
-  body('ville').notEmpty().withMessage('La ville est requise'),
-  body('codePostal').notEmpty().withMessage('Le code postal est requis'),
-  body('nomParent').notEmpty().withMessage('Le nom du parent est requis'),
-  body('telephoneParent').notEmpty().withMessage('Le téléphone du parent est requis')
+  body("prenom").notEmpty().withMessage("Le prénom est requis"),
+  body("nom").notEmpty().withMessage("Le nom est requis"),
+  body("email").isEmail().withMessage("Email invalide"),
+  body("telephone").notEmpty().withMessage("Le téléphone est requis"),
+  body("dateNaissance").isDate().withMessage("Date de naissance invalide"),
+  body("genre").isIn(["masculin", "feminin"]).withMessage("Genre invalide"),
+  body("niveau")
+    .isIn(["maternelle", "primaire", "college", "lycee"])
+    .withMessage("Niveau invalide"),
+  body("classe").notEmpty().withMessage("La classe est requise"),
+  body("adresse").notEmpty().withMessage("L'adresse est requise"),
+  body("ville").notEmpty().withMessage("La ville est requise"),
+  body("codePostal").notEmpty().withMessage("Le code postal est requis"),
+  body("nomParent").notEmpty().withMessage("Le nom du parent est requis"),
+  body("telephoneParent")
+    .notEmpty()
+    .withMessage("Le téléphone du parent est requis"),
 ];
 
+// Route de test pour vérifier si le fichier est bien chargé
+router.get("/test", (req, res) => {
+  res.json({ message: "Route students fonctionnelle" });
+});
+
+router.post("/test", (req, res) => {
+  res.json({ message: "POST students fonctionne", body: req.body });
+});
+
 // POST /api/students - Créer une nouvelle inscription
-router.post('/', validateStudent, async (req, res) => {
+router.post("/", validateStudent, async (req, res) => {
   try {
     // Vérifier les erreurs de validation
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({
         success: false,
-        errors: errors.array()
+        errors: errors.array(),
       });
     }
 
@@ -38,7 +51,7 @@ router.post('/', validateStudent, async (req, res) => {
     if (existingStudent) {
       return res.status(400).json({
         success: false,
-        message: 'Un étudiant avec cet email existe déjà'
+        message: "Un étudiant avec cet email existe déjà",
       });
     }
 
@@ -48,30 +61,29 @@ router.post('/', validateStudent, async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: 'Inscription réussie !',
+      message: "Inscription réussie !",
       data: {
         id: student._id,
         nom: student.nom,
         prenom: student.prenom,
         email: student.email,
-        statut: student.statut
-      }
+        statut: student.statut,
+      },
     });
-
   } catch (error) {
-    console.error('Erreur lors de l\'inscription:', error);
+    console.error("Erreur lors de l'inscription:", error);
     res.status(500).json({
       success: false,
-      message: 'Erreur serveur lors de l\'inscription'
+      message: "Erreur serveur lors de l'inscription",
     });
   }
 });
 
 // GET /api/students - Récupérer tous les étudiants
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const { page = 1, limit = 10, niveau, classe, statut } = req.query;
-    
+
     // Construire le filtre
     const filter = {};
     if (niveau) filter.niveau = niveau;
@@ -79,7 +91,7 @@ router.get('/', async (req, res) => {
     if (statut) filter.statut = statut;
 
     const students = await Student.find(filter)
-      .select('-__v')
+      .select("-__v")
       .sort({ dateInscription: -1 })
       .limit(limit * 1)
       .skip((page - 1) * limit);
@@ -93,54 +105,52 @@ router.get('/', async (req, res) => {
         page: parseInt(page),
         limit: parseInt(limit),
         total,
-        pages: Math.ceil(total / limit)
-      }
+        pages: Math.ceil(total / limit),
+      },
     });
-
   } catch (error) {
-    console.error('Erreur lors de la récupération des étudiants:', error);
+    console.error("Erreur lors de la récupération des étudiants:", error);
     res.status(500).json({
       success: false,
-      message: 'Erreur serveur'
+      message: "Erreur serveur",
     });
   }
 });
 
 // GET /api/students/:id - Récupérer un étudiant par ID
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    const student = await Student.findById(req.params.id).select('-__v');
-    
+    const student = await Student.findById(req.params.id).select("-__v");
+
     if (!student) {
       return res.status(404).json({
         success: false,
-        message: 'Étudiant non trouvé'
+        message: "Étudiant non trouvé",
       });
     }
 
     res.json({
       success: true,
-      data: student
+      data: student,
     });
-
   } catch (error) {
-    console.error('Erreur lors de la récupération de l\'étudiant:', error);
+    console.error("Erreur lors de la récupération de l'étudiant:", error);
     res.status(500).json({
       success: false,
-      message: 'Erreur serveur'
+      message: "Erreur serveur",
     });
   }
 });
 
 // PUT /api/students/:id/status - Mettre à jour le statut d'un étudiant
-router.put('/:id/status', async (req, res) => {
+router.put("/:id/status", async (req, res) => {
   try {
     const { statut } = req.body;
-    
-    if (!['en_attente', 'accepte', 'refuse'].includes(statut)) {
+
+    if (!["en_attente", "accepte", "refuse"].includes(statut)) {
       return res.status(400).json({
         success: false,
-        message: 'Statut invalide'
+        message: "Statut invalide",
       });
     }
 
@@ -148,54 +158,52 @@ router.put('/:id/status', async (req, res) => {
       req.params.id,
       { statut },
       { new: true }
-    ).select('-__v');
+    ).select("-__v");
 
     if (!student) {
       return res.status(404).json({
         success: false,
-        message: 'Étudiant non trouvé'
+        message: "Étudiant non trouvé",
       });
     }
 
     res.json({
       success: true,
-      message: 'Statut mis à jour avec succès',
-      data: student
+      message: "Statut mis à jour avec succès",
+      data: student,
     });
-
   } catch (error) {
-    console.error('Erreur lors de la mise à jour du statut:', error);
+    console.error("Erreur lors de la mise à jour du statut:", error);
     res.status(500).json({
       success: false,
-      message: 'Erreur serveur'
+      message: "Erreur serveur",
     });
   }
 });
 
 // DELETE /api/students/:id - Supprimer un étudiant
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const student = await Student.findByIdAndDelete(req.params.id);
-    
+
     if (!student) {
       return res.status(404).json({
         success: false,
-        message: 'Étudiant non trouvé'
+        message: "Étudiant non trouvé",
       });
     }
 
     res.json({
       success: true,
-      message: 'Étudiant supprimé avec succès'
+      message: "Étudiant supprimé avec succès",
     });
-
   } catch (error) {
-    console.error('Erreur lors de la suppression:', error);
+    console.error("Erreur lors de la suppression:", error);
     res.status(500).json({
       success: false,
-      message: 'Erreur serveur'
+      message: "Erreur serveur",
     });
   }
-});
+}); // ✅ Fermeture correcte de la fonction DELETE
 
 module.exports = router;

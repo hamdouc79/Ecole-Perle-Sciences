@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require("path");
+console.log("✅ server.js lancé sur Railway...");
+
 require("dotenv").config();
 const cors = require("cors");
 
@@ -43,7 +45,7 @@ app.use("/api/students", require("./routes/students"));
 app.use("/api/jobs", require("./routes/jobs"));
 
 // ✅ Route de test
-app.get("/", (req, res) => {
+app.get("/api/test", (req, res) => {
   res.json({ message: "API Backend fonctionnel !" });
 });
 
