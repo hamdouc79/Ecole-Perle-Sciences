@@ -1,25 +1,38 @@
-import React, { useState } from 'react';
-import { Users, BookOpen, Award, Mail, Phone, MapPin, Send, Check, Upload, FileText, X, AlertCircle } from 'lucide-react';
-import apiService from '../service/api';
+import React, { useState } from "react";
+import {
+  Users,
+  BookOpen,
+  Award,
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Check,
+  Upload,
+  FileText,
+  X,
+  AlertCircle,
+} from "lucide-react";
+import apiService from "../service/api";
 const PageRecrutement = () => {
   const [formulaire, setFormulaire] = useState({
-    nom: '',
-    prenom: '',
-    email: '',
-    telephone: '',
-    poste: '',
-    message: '',
-    cv: null
+    nom: "",
+    prenom: "",
+    email: "",
+    telephone: "",
+    poste: "",
+    message: "",
+    cv: null,
   });
 
   const [envoye, setEnvoye] = useState(false);
   const [enCours, setEnCours] = useState(false);
-  const [erreur, setErreur] = useState('');
+  const [erreur, setErreur] = useState("");
 
   const handleChange = (e) => {
     setFormulaire({
       ...formulaire,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -27,22 +40,26 @@ const PageRecrutement = () => {
     const file = e.target.files[0];
     if (file) {
       // Vérifier le type de fichier
-      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      const allowedTypes = [
+        "application/pdf",
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      ];
       if (!allowedTypes.includes(file.type)) {
-        setErreur('Seuls les fichiers PDF, DOC et DOCX sont autorisés');
+        setErreur("Seuls les fichiers PDF, DOC et DOCX sont autorisés");
         return;
       }
-      
+
       // Vérifier la taille (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
-        setErreur('La taille du fichier ne doit pas dépasser 5MB');
+        setErreur("La taille du fichier ne doit pas dépasser 5MB");
         return;
       }
-      
-      setErreur('');
+
+      setErreur("");
       setFormulaire({
         ...formulaire,
-        cv: file
+        cv: file,
       });
     }
   };
@@ -50,101 +67,102 @@ const PageRecrutement = () => {
   const supprimerCV = () => {
     setFormulaire({
       ...formulaire,
-      cv: null
+      cv: null,
     });
     // Réinitialiser l'input file
-    const fileInput = document.getElementById('cv-upload');
+    const fileInput = document.getElementById("cv-upload");
     if (fileInput) {
-      fileInput.value = '';
+      fileInput.value = "";
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErreur('');
+    setErreur("");
     setEnCours(true);
 
     try {
       // Créer FormData pour l'envoi
       const formData = new FormData();
-      formData.append('nom', formulaire.nom);
-      formData.append('prenom', formulaire.prenom);
-      formData.append('email', formulaire.email);
-      formData.append('telephone', formulaire.telephone);
-      formData.append('posteSouhaite', formulaire.poste);
-      formData.append('messageMotivation', formulaire.message);
-      
+      formData.append("nom", formulaire.nom);
+      formData.append("prenom", formulaire.prenom);
+      formData.append("email", formulaire.email);
+      formData.append("telephone", formulaire.telephone);
+      formData.append("posteSouhaite", formulaire.poste);
+      formData.append("messageMotivation", formulaire.message);
+
       if (formulaire.cv) {
-        formData.append('cv', formulaire.cv);
+        formData.append("cv", formulaire.cv);
       }
 
       // Simuler l'appel API - remplacez par votre vraie logique
       // await apiService.createJobApplication(formData);
-      
+
       // Simulation d'un délai
-      await apiService.createJobApplication(formData);      
+      await apiService.createJobApplication(formData);
       setEnvoye(true);
-      
+
       // Réinitialiser le formulaire
       setFormulaire({
-        nom: '',
-        prenom: '',
-        email: '',
-        telephone: '',
-        poste: '',
-        message: '',
-        cv: null
+        nom: "",
+        prenom: "",
+        email: "",
+        telephone: "",
+        poste: "",
+        message: "",
+        cv: null,
       });
-      
+
       // Réinitialiser l'input file
-      const fileInput = document.getElementById('cv-upload');
+      const fileInput = document.getElementById("cv-upload");
       if (fileInput) {
-        fileInput.value = '';
+        fileInput.value = "";
       }
-      
+
       setTimeout(() => setEnvoye(false), 5000);
-      
     } catch (error) {
-      setErreur(error.message || 'Erreur lors de l\'envoi de la candidature');
+      setErreur(error.message || "Erreur lors de l'envoi de la candidature");
     } finally {
       setEnCours(false);
     }
   };
 
   const scrollToForm = () => {
-    document.querySelector('.section-formulaire').scrollIntoView({ 
-      behavior: 'smooth' 
+    document.querySelector(".section-formulaire").scrollIntoView({
+      behavior: "smooth",
     });
   };
 
   const postes = [
     {
-      titre: 'Enseignant(e) Primaire',
-      type: 'Temps plein',
+      titre: "Enseignant(e) Primaire",
+      type: "Temps plein",
       icone: <BookOpen className="icone-poste" />,
-      description: 'Nous cherchons un enseignant passionné pour nos classes de primaire.'
+      description:
+        "Nous cherchons un enseignant passionné pour nos classes de primaire.",
     },
     {
-      titre: 'Professeur de Mathématiques',
-      type: 'Temps plein',
+      titre: "Professeur de Mathématiques",
+      type: "Temps plein",
       icone: <Award className="icone-poste" />,
-      description: 'Poste pour enseigner les mathématiques au collège et lycée.'
+      description:
+        "Poste pour enseigner les mathématiques au collège et lycée.",
     },
     {
-      titre: 'Surveillant(e)',
-      type: 'Temps partiel',
+      titre: "Surveillant(e)",
+      type: "Temps partiel",
       icone: <Users className="icone-poste" />,
-      description: 'Accompagner et surveiller les élèves pendant les pauses.'
-    }
+      description: "Accompagner et surveiller les élèves pendant les pauses.",
+    },
   ];
 
   const avantages = [
-    'Salaire compétitif',
-    'Formation continue',
-    'Environnement bienveillant',
-    'Équipe dynamique',
-    'Matériel moderne',
-    'Évolution de carrière'
+    "Salaire compétitif",
+    "Formation continue",
+    "Environnement bienveillant",
+    "Équipe dynamique",
+    "Matériel moderne",
+    "Évolution de carrière",
   ];
 
   return (
@@ -164,18 +182,25 @@ const PageRecrutement = () => {
             <span className="texte-badge">🚀 Nous recrutons</span>
           </div>
           <h1 className="titre-principal">
-            Façonnez l'Avenir de 
+            Façonnez l'Avenir de
             <span className="texte-gradient"> l'Éducation</span>
           </h1>
           <p className="sous-titre">
-            Rejoignez une équipe passionnée qui transforme l'apprentissage 
-            en expérience extraordinaire
+            Rejoignez une équipe passionnée qui transforme l'apprentissage en
+            expérience extraordinaire
           </p>
           <div className="boutons-action">
             <button className="bouton-principal" onClick={scrollToForm}>
               Postuler Maintenant
             </button>
-            <button className="bouton-secondaire" onClick={() => document.querySelector('.section-postes').scrollIntoView({ behavior: 'smooth' })}>
+            <button
+              className="bouton-secondaire"
+              onClick={() =>
+                document
+                  .querySelector(".section-postes")
+                  .scrollIntoView({ behavior: "smooth" })
+              }
+            >
               Voir les Postes
             </button>
           </div>
@@ -193,9 +218,10 @@ const PageRecrutement = () => {
           <div className="texte-presentation">
             <h2 className="titre-section">Pourquoi Nous Rejoindre ?</h2>
             <p className="description">
-              Notre école privée offre un environnement d'apprentissage exceptionnel où chaque membre 
-              de l'équipe contribue au succès de nos élèves. Nous recherchons des professionnels 
-              passionnés qui partagent nos valeurs d'excellence et de bienveillance.
+              Notre école privée offre un environnement d'apprentissage
+              exceptionnel où chaque membre de l'équipe contribue au succès de
+              nos élèves. Nous recherchons des professionnels passionnés qui
+              partagent nos valeurs d'excellence et de bienveillance.
             </p>
           </div>
         </div>
@@ -216,7 +242,9 @@ const PageRecrutement = () => {
                   </div>
                 </div>
                 <p className="description-poste">{poste.description}</p>
-                <button className="bouton-candidater" onClick={scrollToForm}>Candidater</button>
+                <button className="bouton-candidater" onClick={scrollToForm}>
+                  Candidater
+                </button>
               </div>
             ))}
           </div>
@@ -302,8 +330,12 @@ const PageRecrutement = () => {
                 required
               >
                 <option value="">Sélectionnez un poste</option>
-                <option value="enseignant-primaire">Enseignant(e) Primaire</option>
-                <option value="professeur-maths">Professeur de Mathématiques</option>
+                <option value="enseignant-primaire">
+                  Enseignant(e) Primaire
+                </option>
+                <option value="professeur-maths">
+                  Professeur de Mathématiques
+                </option>
                 <option value="surveillant">Surveillant(e)</option>
                 <option value="autre">Candidature spontanée</option>
               </select>
@@ -311,22 +343,27 @@ const PageRecrutement = () => {
 
             {/* Section Upload CV */}
             <div className="champ-formulaire">
-              <label className="label-formulaire">CV * (PDF, DOC, DOCX - Max 5MB)</label>
+              <label className="label-formulaire">
+                CV * (PDF, DOC, DOCX - Max 5MB)
+              </label>
               <div className="zone-upload">
                 {!formulaire.cv ? (
                   <div className="zone-drag-drop">
                     <Upload className="icone-upload" />
                     <p className="texte-upload">
-                      Glissez votre CV ici ou 
-                      <label htmlFor="cv-upload" className="lien-upload"> cliquez pour parcourir</label>
+                      Glissez votre CV ici ou
+                      <label htmlFor="cv-upload" className="lien-upload">
+                        {" "}
+                        cliquez pour parcourir
+                      </label>
                     </p>
                     <input
                       id="cv-upload"
                       type="file"
                       accept=".pdf,.doc,.docx"
+                      name="FILE-cv"
                       onChange={handleFileChange}
                       className="input-file-cache"
-                      required
                     />
                   </div>
                 ) : (
@@ -334,7 +371,9 @@ const PageRecrutement = () => {
                     <div className="info-fichier">
                       <FileText className="icone-fichier" />
                       <div className="details-fichier">
-                        <span className="nom-fichier">{formulaire.cv.name}</span>
+                        <span className="nom-fichier">
+                          {formulaire.cv.name}
+                        </span>
                         <span className="taille-fichier">
                           {(formulaire.cv.size / 1024 / 1024).toFixed(2)} MB
                         </span>
@@ -371,11 +410,7 @@ const PageRecrutement = () => {
               </div>
             )}
 
-            <button 
-              type="submit" 
-              className="bouton-envoyer"
-              disabled={enCours}
-            >
+            <button type="submit" className="bouton-envoyer" disabled={enCours}>
               {enCours ? (
                 <>
                   <div className="spinner"></div>
@@ -422,7 +457,7 @@ const PageRecrutement = () => {
 
       <style jsx>{`
         .page-recrutement {
-          font-family: 'Arial', sans-serif;
+          font-family: "Arial", sans-serif;
           line-height: 1.6;
           color: #333;
         }
@@ -452,7 +487,7 @@ const PageRecrutement = () => {
           position: absolute;
           width: 20px;
           height: 20px;
-          background: rgba(255,255,255,0.1);
+          background: rgba(255, 255, 255, 0.1);
           border-radius: 50%;
           animation: float 6s ease-in-out infinite;
         }
@@ -494,8 +529,13 @@ const PageRecrutement = () => {
         }
 
         @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
         }
 
         .contenu-entete {
@@ -508,12 +548,12 @@ const PageRecrutement = () => {
 
         .badge-recrutement {
           display: inline-block;
-          background: rgba(255,255,255,0.2);
+          background: rgba(255, 255, 255, 0.2);
           backdrop-filter: blur(10px);
           padding: 8px 20px;
           border-radius: 25px;
           margin-bottom: 30px;
-          border: 1px solid rgba(255,255,255,0.3);
+          border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .texte-badge {
@@ -529,7 +569,7 @@ const PageRecrutement = () => {
         }
 
         .texte-gradient {
-          background: linear-gradient(45deg, #FFD700, #FFA500);
+          background: linear-gradient(45deg, #ffd700, #ffa500);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -550,7 +590,7 @@ const PageRecrutement = () => {
         }
 
         .bouton-principal {
-          background: linear-gradient(45deg, #FFD700, #FFA500);
+          background: linear-gradient(45deg, #ffd700, #ffa500);
           color: #333;
           border: none;
           padding: 15px 35px;
@@ -559,18 +599,18 @@ const PageRecrutement = () => {
           font-weight: 700;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(255,215,0,0.3);
+          box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
         }
 
         .bouton-principal:hover {
           transform: translateY(-3px);
-          box-shadow: 0 6px 20px rgba(255,215,0,0.5);
+          box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
         }
 
         .bouton-secondaire {
           background: transparent;
           color: white;
-          border: 2px solid rgba(255,255,255,0.5);
+          border: 2px solid rgba(255, 255, 255, 0.5);
           padding: 13px 35px;
           border-radius: 50px;
           font-size: 1.1rem;
@@ -581,8 +621,8 @@ const PageRecrutement = () => {
         }
 
         .bouton-secondaire:hover {
-          background: rgba(255,255,255,0.1);
-          border-color: rgba(255,255,255,0.8);
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.8);
           transform: translateY(-2px);
         }
 
@@ -595,10 +635,16 @@ const PageRecrutement = () => {
           pointer-events: none;
         }
 
-        .cercle-1, .cercle-2, .cercle-3 {
+        .cercle-1,
+        .cercle-2,
+        .cercle-3 {
           position: absolute;
           border-radius: 50%;
-          background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+          background: linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.05)
+          );
           backdrop-filter: blur(10px);
         }
 
@@ -627,8 +673,12 @@ const PageRecrutement = () => {
         }
 
         @keyframes rotate {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
 
         .conteneur {
@@ -675,7 +725,7 @@ const PageRecrutement = () => {
           background: white;
           border-radius: 12px;
           padding: 30px;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
           transition: transform 0.3s ease;
         }
 
@@ -751,7 +801,7 @@ const PageRecrutement = () => {
           background: white;
           padding: 20px;
           border-radius: 8px;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .icone-check {
@@ -776,7 +826,7 @@ const PageRecrutement = () => {
           background: white;
           padding: 40px;
           border-radius: 12px;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .ligne-formulaire {
@@ -963,8 +1013,12 @@ const PageRecrutement = () => {
         }
 
         @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
         }
 
         .message-succes {
@@ -1050,7 +1104,9 @@ const PageRecrutement = () => {
             grid-template-columns: 1fr;
           }
 
-          .cercle-1, .cercle-2, .cercle-3 {
+          .cercle-1,
+          .cercle-2,
+          .cercle-3 {
             display: none;
           }
 

@@ -1,5 +1,4 @@
 import React from "react";
-import enfant from "../assets/enfant.png";
 import avantage2 from "../assets/avantage2.gif";
 import Students from "../assets/students.jpg";
 

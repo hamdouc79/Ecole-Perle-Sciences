@@ -15,7 +15,6 @@ import {
   Calendar,
   Mail,
   Phone,
-  MapPin,
   User,
   Briefcase,
   MessageSquare,
